@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author DAW
+ * @author Raquel Tapia Oriz
  */
 public class MiniFileManager {
 

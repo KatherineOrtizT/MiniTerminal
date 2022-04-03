@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author DAW
+ * @author Raquel Tapia Ortiz
  */
 public class MiniTerminal {
 
@@ -21,10 +21,11 @@ public class MiniTerminal {
         int opcion = 0;
         Scanner leer = new Scanner(System.in);
         MiniFileManager e = new MiniFileManager();
+        // se repetira el proyecto hasta que el usuario elija la opcion exit
         do {
             System.out.print(">");
             String comando = leer.nextLine();
-
+                // Los comandos se dividen en dos 
             if (comando.contains(" ")) {
                 String[] parts = comando.split("\\s+");
                 String part1 = parts[0];
@@ -44,14 +45,12 @@ public class MiniTerminal {
                         String part3 = parts[2];
                         e.mv(part2, part3);
                         break;
-                    case "info":
-                    {
+                    case "info":                  
                         try {
                             e.info(part2);
                         } catch (Exception ex) {
                             ex.printStackTrace();
-                        }
-                    }
+                        }                    
                         break;
 
                     default:
