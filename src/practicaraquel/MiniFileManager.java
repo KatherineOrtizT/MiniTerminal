@@ -79,7 +79,6 @@ public class MiniFileManager {
 
     /**
      * Da la ruta del directorio donde estas ubicado
-     *
      * @return String con la ruta del directorio donde estas ubicado
      */
     public String getPWD() {
@@ -138,7 +137,6 @@ public class MiniFileManager {
 
     /**
      * Crea el directorio ‘DIR’ en la carpeta actual.
-     *
      * @param part2 El String el nombre del Directorio/Fichero que vamos a crear
      */
     public void mkdir(String part2) {
@@ -165,19 +163,20 @@ public class MiniFileManager {
         File fileBorrar = new File(creaRuta(part2));
         boolean comprueba = true;
         if (fileBorrar.listFiles().length != 0) {
-            for (File i : fileBorrar.listFiles()) {
+            for (File i : fileBorrar.listFiles()) {//comprobamos que no tenga Subcarpetas
                 if (i.isDirectory()) {
                     comprueba = false;
                 }
             }
             if (comprueba) {
-                File borrarArchivo[] = fileBorrar.listFiles();//CREA UN ITERADOR
-                for (int i = 0; i < fileBorrar.listFiles().length; i++) {
+                File borrarArchivo[] = fileBorrar.listFiles();//borramos los ficheros
+                for (int i = 0; i < borrarArchivo.length; i++) {
                     borrarArchivo[i].delete();
                 }
-                fileBorrar.delete();
+                if (fileBorrar.delete()) {
+                    System.out.println("borrado");
+                }
             }
-
         } else if (fileBorrar.delete()) {
             System.out.println("borrado");
         } else {
@@ -222,7 +221,7 @@ public class MiniFileManager {
     /**
      * Calculamos el tamaño de toda la carpeta y sus subcarpetas
      * @param directorio para calcular tamaño
-     * @return tamaño en Bytes de la carpeta 
+     * @return tamaño en Bytes de la carpeta
      */
     public long calcularTamaño(File directorio) {
         long tamanio = 0;
